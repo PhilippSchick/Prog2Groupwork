@@ -19,5 +19,35 @@ public class Ei {
 		
 	}
 
+	/**
+	 * @return the defekt
+	 */
+	public boolean isDefekt() {
+		return defekt;
+	}
+
+	/**
+	 * @param defekt the defekt to set
+	 */
+	public void setDefekt(boolean defekt) {
+		this.defekt = defekt;
+	}
+
+	/**
+	 * @return the gewicht
+	 */
+	public int getGewicht() {
+		return gewicht;
+	}
+
+	/**
+	 * @return the legedatum
+	 */
+	public Date getLegedatum() {
+		return legedatum;
+	}
+	
+	
+
 }
 
