@@ -1,6 +1,6 @@
 package de.hsmannheim.ostereiproduktion;
 
-import java.util.Date;
+import java.util.GregorianCalendar;
 
 /**
  * @author Jeremias Kunz, Daniel Reichel, Philipp Schick
@@ -12,11 +12,11 @@ public class Ei {
 	 * min. 40, max. 80; Gewicht wird Zufällig ermittelt
 	 */
 	private int gewicht;
-	private Date legedatum;
+	private GregorianCalendar legedatum;
 	private boolean defekt;
 
 	public Ei() {
-		
+
 	}
 
 	/**
@@ -43,11 +43,8 @@ public class Ei {
 	/**
 	 * @return the legedatum
 	 */
-	public Date getLegedatum() {
+	public GregorianCalendar getLegedatum() {
 		return legedatum;
 	}
-	
-	
 
 }
-
