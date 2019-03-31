@@ -5,6 +5,6 @@ package de.hsmannheim.ostereiproduktion;
  *
  */
 public enum Farbe {
-
+	blau, gelb, grün, rot, ugly
 }
 
