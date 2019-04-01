@@ -6,12 +6,9 @@ import java.util.ArrayList;
  * @author Jeremias Kunz, Daniel Reichel, Philipp Schick
  * @version 1.00, 27.03.2019
  *
+ * Converts {@link Ei} to {@link Osterei}
  */
 public class Ostereifabrik {
-
-	public Ostereifabrik() {
-		
-	}
 
 	/**
 	 * @param gestapelteEierkartons
