@@ -12,7 +12,7 @@ public enum Size {
 	/**
 	 * Returns the matching Size for a given Integer
 	 * 
-	 * @param größe The size as an Integer
+	 * @param size The size as an Integer
 	 * @return The Size
 	 */
 	public static Size getSize(int size) {
