@@ -6,6 +6,6 @@ package de.hsmannheim.ostereiproduktion;
  * Represents the color of an {@link Ei}
  */
 public enum Farbe {
-	blau, gelb, grün, rot, ugly
+	blau, gelb, gr\u00fcn, rot, ugly
 }
 
