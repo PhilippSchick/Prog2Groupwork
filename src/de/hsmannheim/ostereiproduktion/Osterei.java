@@ -24,16 +24,18 @@ public class Osterei extends Ei {
 	 * @param ei The {@link Ei}
 	 */
 	public Osterei(Ei ei) {
-		this.defekt = ei.defekt;
-		this.legedatum = ei.legedatum;
-		this.gewicht = ei.gewicht;
+		super.setGewicht(ei.getGewicht());
+		super.setLegedatum(ei.getLegedatum());
+		if (ei.isDefekt()) {
+			super.setDefekt();
+		}
 	}
 
 	/**
 	 * Sets <code>gekocht</code> to <code>true</code>
 	 */
 	public void kochen() {
-		if (defekt) {
+		if (super.isDefekt()) {
 			throw new EggCrackException("Egg is defect!");
 		}
 		if (gekocht) {
