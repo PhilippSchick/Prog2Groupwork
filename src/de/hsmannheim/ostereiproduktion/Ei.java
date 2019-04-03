@@ -46,7 +46,7 @@ public class Ei {
 	 * @return the weight
 	 */
 	public int getGewicht() {
-		gewicht = (int) (Math.random()*(81 - 40)) + 40;
+		gewicht = (int) (Math.random() * (81 - 40)) + 40;
 		return gewicht;
 	}
 
@@ -59,18 +59,21 @@ public class Ei {
 		legedatum = new GregorianCalendar();
 		return legedatum;
 	}
+
 	/**
 	 * Return the size from the egg
+	 * 
 	 * @return
 	 */
-	public int getGroesse(){
-		
-	return 0;
-		
+	public int getGroesse() {
+
+		return 0;
+
 	}
 
 	/**
 	 * set the weight
+	 * 
 	 * @param gewicht the gewicht to set
 	 */
 	protected void setGewicht(int gewicht) {
@@ -79,6 +82,7 @@ public class Ei {
 
 	/**
 	 * set the date the Egg was laid
+	 * 
 	 * @param legedatum the legedatum to set
 	 */
 	protected void setLegedatum(GregorianCalendar legedatum) {
@@ -86,13 +90,11 @@ public class Ei {
 	}
 
 	/**
-	 * Set the defekt of the egg
+	 * Sets the Egg to defect
 	 * 
-	 * @param defekt the defekt to set
 	 */
-	public void setDefekt(boolean defekt) {
-		this.defekt = defekt;
+	public void setDefekt() {
+		// TODO fill me!
 	}
 
-	
 }
