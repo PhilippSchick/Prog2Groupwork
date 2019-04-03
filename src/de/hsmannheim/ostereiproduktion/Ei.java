@@ -12,12 +12,12 @@ public class Ei {
 	/**
 	 * The weight of the Egg
 	 */
-	protected int gewicht;
+	private int gewicht;
 
 	/**
 	 * The date the Egg was laid
 	 */
-	protected GregorianCalendar legedatum;
+	private GregorianCalendar legedatum;
 
 	/**
 	 * Is true if the Egg is defect
