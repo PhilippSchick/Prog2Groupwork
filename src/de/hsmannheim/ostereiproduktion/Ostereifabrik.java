@@ -68,8 +68,7 @@ public class Ostereifabrik {
 	 * @return The Number of Eierkartons
 	 */
 	public int getAnzahlEierkartons() {
-		return 0;
-		// TODO Auto-generated method stub
+		return oEiStorage.size();
 	}
 
 	/**
