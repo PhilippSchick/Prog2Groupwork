@@ -115,6 +115,7 @@ public class Huehnerfarm {
 			throw new FarmDeliveryQuantityException("die mindestens Bestellung liegt bei " + minBest
 					+ "und die maximale Bestellung bei" + maxBest + "Ihre Bestellung lautet :" + menge);
 		}
+		
 		return liefereEier(menge, 5);
 		// TODO Auto-generated method stub
 	}
