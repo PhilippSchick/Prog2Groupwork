@@ -45,7 +45,27 @@ public class Huehnerfarm {
 	 * @return ArrayList<Ei[]> The Eierkarton pack
 	 */
 	private ArrayList<Ei[]> erstelleEierkartonstapel(int anzEier) {
-		return null;
+		ArrayList<Ei[]> obj = new ArrayList<>();
+		for (int i = anzEier; i > 0; i -= 25) {
+			if (anzEier < 25) {
+				Ei[] ei = new Ei[anzEier];
+				for (int y = 0; y < anzEier; y++) {
+					ei[y] = new Ei();
+				}
+				obj.add(ei);
+				i = 0;
+
+			} else {
+				Ei[] ei = new Ei[25];
+				for (int y = 0; y < 25; y++) {
+					ei[y] = new Ei();
+				}
+				obj.add(ei);
+
+			}
+
+		}
+		return obj;
 		// TODO Auto-generated method stub
 	}
 
