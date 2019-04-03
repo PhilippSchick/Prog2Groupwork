@@ -81,7 +81,18 @@ public class Huehnerfarm {
 	 * @return ArrayList<Ei[]> The Eierkarton pack
 	 */
 	public ArrayList<Ei[]> liefereEier(int menge, int ausschuss) {
-		return null;
+		if (ausschuss < 0 && ausschuss > 100) {
+			double as = (double) (5 / 100);
+			menge = menge - (int) (as * menge);
+			return (erstelleEierkartonstapel(menge));
+
+		} else {
+			double as = (double) (ausschuss / 100);
+			menge = menge - (int) (as * menge);
+			return (erstelleEierkartonstapel(menge));
+
+		}
+
 		// TODO Auto-generated method stub
 	}
 
@@ -94,7 +105,7 @@ public class Huehnerfarm {
 	 * @return ArrayList<Ei[]> The Eierkarton pack
 	 */
 	public ArrayList<Ei[]> liefereEier(int menge) {
-		return null;
+		return liefereEier(menge, 5);
 		// TODO Auto-generated method stub
 	}
 
