@@ -65,9 +65,9 @@ public class Ei {
 	 * 
 	 * @return
 	 */
-	public int getGroesse() {
-
-		return 0;
+	public Size getGroesse() {
+		Size groesse =Size.getSize(gewicht);
+		return groesse;
 
 	}
 
@@ -94,7 +94,7 @@ public class Ei {
 	 * 
 	 */
 	public void setDefekt() {
-		// TODO fill me!
+		defekt = true;
 	}
 
 }
