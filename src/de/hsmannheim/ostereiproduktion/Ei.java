@@ -12,17 +12,17 @@ public class Ei {
 	/**
 	 * The weight of the Egg
 	 */
-	protected int gewicht;
+	private int gewicht;
 
 	/**
 	 * The date the Egg was laid
 	 */
-	protected GregorianCalendar legedatum;
+	private GregorianCalendar legedatum;
 
 	/**
 	 * Is true if the Egg is defect
 	 */
-	protected boolean defekt;
+	private boolean defekt;
 
 	/**
 	 * Generates a new instance
@@ -38,14 +38,6 @@ public class Ei {
 	 */
 	public boolean isDefekt() {
 		return defekt;
-	}
-
-	/**
-	 * Sets the Egg to defect
-	 * 
-	 * @param Sets the Egg defect
-	 */
-	public void setDefekt() {
 	}
 
 	/**
@@ -67,5 +59,40 @@ public class Ei {
 		legedatum = new GregorianCalendar();
 		return legedatum;
 	}
+	/**
+	 * Return the size from the egg
+	 * @return
+	 */
+	public int getGroeﬂe(){
+		
+	return 0;
+		
+	}
 
+	/**
+	 * set the weight
+	 * @param gewicht the gewicht to set
+	 */
+	protected void setGewicht(int gewicht) {
+		this.gewicht = gewicht;
+	}
+
+	/**
+	 * set the date the Egg was laid
+	 * @param legedatum the legedatum to set
+	 */
+	protected void setLegedatum(GregorianCalendar legedatum) {
+		this.legedatum = legedatum;
+	}
+
+	/**
+	 * Set the defekt of the egg
+	 * 
+	 * @param defekt the defekt to set
+	 */
+	public void setDefekt(boolean defekt) {
+		this.defekt = defekt;
+	}
+
+	
 }
