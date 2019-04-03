@@ -80,12 +80,12 @@ public class Ostereifabrik {
 	}
 
 	/**
-	 * Removes a Karton from the pack, affekts the Karton with {@link Ei}ern
+	 * Removes a Karton from the pack, affects the Karton with {@link Ei}ern
 	 * 
 	 * @param kartonId The id of the Karton, has to be greater or equals 0
 	 */
 	public void vernichteKarton(int kartonId) {
-		// TODO Auto-generated method stub
+		eiStorage.remove(kartonId);
 	}
 
 }
