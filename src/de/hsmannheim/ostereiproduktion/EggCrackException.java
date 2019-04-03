@@ -11,4 +11,7 @@ package de.hsmannheim.ostereiproduktion;
  */
 public class EggCrackException extends RuntimeException {
 
+	public EggCrackException(String message) {
+		super(message);
+	}
 }

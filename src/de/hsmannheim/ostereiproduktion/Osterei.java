@@ -24,14 +24,22 @@ public class Osterei extends Ei {
 	 * @param ei The {@link Ei}
 	 */
 	public Osterei(Ei ei) {
-
+		this.defekt = ei.defekt;
+		this.legedatum = ei.legedatum;
+		this.gewicht = ei.gewicht;
 	}
 
 	/**
 	 * Sets <code>gekocht</code> to <code>true</code>
 	 */
 	public void kochen() {
-		// TODO Auto-generated method stub
+		if (defekt) {
+			throw new EggCrackException("Egg is defect!");
+		}
+		if (gekocht) {
+			throw new EggCrackException("Egg already cooked!");
+		}
+		gekocht = true;
 	}
 
 	/**
@@ -40,7 +48,11 @@ public class Osterei extends Ei {
 	 * @param farbe The color of the Egg
 	 */
 	public void faerben(Farbe farbe) {
-		// TODO Auto-generated method stub
+		if (this.farbe != null) {
+			this.farbe = Farbe.ugly;
+		} else {
+			this.farbe = farbe;
+		}
 	}
 
 }
