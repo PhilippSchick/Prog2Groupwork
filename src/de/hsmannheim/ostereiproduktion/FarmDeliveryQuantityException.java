@@ -6,8 +6,8 @@ package de.hsmannheim.ostereiproduktion;
  */
 public class FarmDeliveryQuantityException extends RuntimeException {
 
-	public FarmDeliveryQuantityException() {
-		
+	public FarmDeliveryQuantityException(String message) {
+		super(message);
 	}
 
 }
