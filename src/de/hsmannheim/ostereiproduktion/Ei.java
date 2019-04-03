@@ -12,17 +12,17 @@ public class Ei {
 	/**
 	 * The weight of the Egg
 	 */
-	private int gewicht;
+	protected int gewicht;
 
 	/**
 	 * The date the Egg was laid
 	 */
-	private GregorianCalendar legedatum;
+	protected GregorianCalendar legedatum;
 
 	/**
 	 * Is true if the Egg is defect
 	 */
-	private boolean defekt;
+	protected boolean defekt;
 
 	/**
 	 * Generates a new instance
@@ -64,7 +64,7 @@ public class Ei {
 	 * @return the date the Egg was laid
 	 */
 	public GregorianCalendar getLegedatum() {
-		
+
 		return legedatum;
 	}
 
