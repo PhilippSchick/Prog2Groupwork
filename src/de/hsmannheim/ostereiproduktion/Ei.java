@@ -63,7 +63,7 @@ public class Ei {
 	 * Return the size from the egg
 	 * @return
 	 */
-	public int getGroeße(){
+	public int getGroesse(){
 		
 	return 0;
 		
