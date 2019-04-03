@@ -48,7 +48,11 @@ public class Osterei extends Ei {
 	 * @param farbe The color of the Egg
 	 */
 	public void faerben(Farbe farbe) {
-		// TODO Auto-generated method stub
+		if (this.farbe != null) {
+			this.farbe = Farbe.ugly;
+		} else {
+			this.farbe = farbe;
+		}
 	}
 
 }
