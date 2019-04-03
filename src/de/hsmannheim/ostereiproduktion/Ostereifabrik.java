@@ -9,6 +9,15 @@ import java.util.ArrayList;
  *          Converts {@link Ei} to {@link Osterei}
  */
 public class Ostereifabrik {
+	/**
+	 * The Eggs stored in the Fabric
+	 */
+	private ArrayList<Ei[]> eiStorage;
+	
+	/**
+	 * The Eastereggs stored in the Fabric
+	 */
+	private ArrayList<Osterei> oEiStorage;
 
 	/**
 	 * Receives {@link Ei}er to convert them in {@link Osterei}er, if there are
@@ -28,7 +37,16 @@ public class Ostereifabrik {
 	 * @param kartonId The id of the Eierkarton to process
 	 */
 	private void kocheEier(int kartonId) {
-		// TODO Auto-generated method stub
+		for (Ei ei : eiStorage.get(kartonId)) {
+			Osterei oEi = new Osterei(ei);
+			try {
+				oEi.kochen();
+			} catch (EggCrackException e) {
+				vernichteKarton(kartonId);
+				return;
+			}
+			oEiStorage.add(oEi);
+		}
 	}
 
 	/**
