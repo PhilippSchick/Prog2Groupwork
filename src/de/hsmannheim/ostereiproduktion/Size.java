@@ -16,6 +16,14 @@ public enum Size {
 	 * @return The Size
 	 */
 	public static Size getSize(int size) {
-		return null;
+		if (size < 53) {
+			return S;
+		} else if (size < 63) {
+			return M;
+		} else if (size < 74) {
+			return L;
+		} else {
+			return XL;
+		}
 	}
 }
