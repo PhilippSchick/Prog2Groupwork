@@ -64,7 +64,7 @@ public class Ei {
 	 * @return the date the Egg was laid
 	 */
 	public GregorianCalendar getLegedatum() {
-
+		legedatum = new GregorianCalendar();
 		return legedatum;
 	}
 
