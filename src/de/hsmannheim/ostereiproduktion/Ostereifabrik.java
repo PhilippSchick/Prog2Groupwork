@@ -13,7 +13,7 @@ public class Ostereifabrik {
 	 * The Eggs stored in the Fabric
 	 */
 	private ArrayList<Ei[]> eiStorage;
-	
+
 	/**
 	 * The Eastereggs stored in the Fabric
 	 */
@@ -55,7 +55,7 @@ public class Ostereifabrik {
 	 * (means it is just a {@link Ei}) a {@link EggNotBoiledException} will be
 	 * thrown
 	 * 
-	 * @param kartonId The id of the Eierkarton to process
+	 * @param kartonId The id of the Karton, has to be greater or equals 0
 	 * @param farbe    The color of the {@link Osterei}ern
 	 */
 	private void faerbeEier(int kartonId, Farbe farbe) {
@@ -80,7 +80,7 @@ public class Ostereifabrik {
 	}
 
 	/**
-	 * Removes a Karton from the pack
+	 * Removes a Karton from the pack, affekts the Karton with {@link Ei}ern
 	 * 
 	 * @param kartonId The id of the Karton, has to be greater or equals 0
 	 */
