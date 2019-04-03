@@ -6,42 +6,61 @@ import java.util.GregorianCalendar;
  * @author Jeremias Kunz, Daniel Reichel, Philipp Schick
  * @version 1.00, 27.03.2019
  *
+ *          Represents a Egg
  */
 public class Ei {
 	/**
-	 * min. 40, max. 80; Gewicht wird Zufällig ermittelt
+	 * The weight of the Egg
 	 */
 	private int gewicht;
+
+	/**
+	 * The date the Egg was laid
+	 */
 	private GregorianCalendar legedatum;
+
+	/**
+	 * Is true if the Egg is defect
+	 */
 	private boolean defekt;
 
+	/**
+	 * Generates a new instance
+	 */
 	public Ei() {
 
 	}
 
 	/**
-	 * @return the defekt
+	 * Returns true if the Egg is defect
+	 * 
+	 * @return Returns true if the Egg is defect
 	 */
 	public boolean isDefekt() {
 		return defekt;
 	}
 
 	/**
-	 * @param defekt the defekt to set
+	 * Sets the Egg to defect
+	 * 
+	 * @param Sets the Egg defect
 	 */
-	public void setDefekt(boolean defekt) {
-		this.defekt = defekt;
+	public void setDefekt() {
 	}
 
 	/**
-	 * @return the gewicht
+	 * Returns the weight
+	 * 
+	 * @return the weight
 	 */
 	public int getGewicht() {
 		return gewicht;
 	}
 
 	/**
-	 * @return the legedatum
+	 * Returns the date the Egg was laid
+	 * 
+	 * @return the date the Egg was laid
 	 */
 	public GregorianCalendar getLegedatum() {
 		return legedatum;
