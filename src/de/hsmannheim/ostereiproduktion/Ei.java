@@ -54,6 +54,7 @@ public class Ei {
 	 * @return the weight
 	 */
 	public int getGewicht() {
+		gewicht = (int) (Math.random()*(81 - 40)) + 40;
 		return gewicht;
 	}
 
@@ -63,6 +64,7 @@ public class Ei {
 	 * @return the date the Egg was laid
 	 */
 	public GregorianCalendar getLegedatum() {
+
 		return legedatum;
 	}
 
