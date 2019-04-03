@@ -27,6 +27,10 @@ public class Huehnerfarm {
 	 */
 	public Huehnerfarm(int minBest, int maxBest) {
 		// TODO Auto-generated constructor stub
+		if (minBest > maxBest) {
+			throw new FarmDeliveryQuantityException("minMenge ist groesser als maxmMenge");
+		}
+
 	}
 
 	/**
@@ -35,6 +39,8 @@ public class Huehnerfarm {
 	 */
 	public Huehnerfarm() {
 		// TODO Auto-generated constructor stub
+		this.minBest = 25;
+		this.maxBest = 5000;
 	}
 
 	/**
@@ -81,7 +87,7 @@ public class Huehnerfarm {
 	 * @return ArrayList<Ei[]> The Eierkarton pack
 	 */
 	public ArrayList<Ei[]> liefereEier(int menge, int ausschuss) {
-		if (ausschuss < 0 && ausschuss > 100) {
+		if (ausschuss < 0 || ausschuss > 100) {
 			double as = (double) (5 / 100);
 			menge = menge - (int) (as * menge);
 			return (erstelleEierkartonstapel(menge));
@@ -105,6 +111,10 @@ public class Huehnerfarm {
 	 * @return ArrayList<Ei[]> The Eierkarton pack
 	 */
 	public ArrayList<Ei[]> liefereEier(int menge) {
+		if (menge > maxBest || menge < minBest) {
+			throw new FarmDeliveryQuantityException("die mindestens Bestellung liegt bei " + minBest
+					+ "und die maximale Bestellung bei" + maxBest + "Ihre Bestellung lautet :" + menge);
+		}
 		return liefereEier(menge, 5);
 		// TODO Auto-generated method stub
 	}
