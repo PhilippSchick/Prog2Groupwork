@@ -1,0 +1,10 @@
+Das Problem wird in zwei Teilprobleme unterteilt, "Object to File" und "File to Object". Dabei schätze ich das "File to Object" Problem als schwieriger ein da es beim einlesen der Datei zu vielen unvohergesehenen Problemen kommen kann während beim erstellen der Datei sich die meisten Problemfälle Testen lassen.
+
+<b>"Object to File"</b>
+Die Methode <i>eierToFile</i> nimmt den Eierkartonstarpel als zweidimensionales Array entgegen und den Namen der zu erzeugenden Datei als String. Dann wird mit zwei verschachtelten foreach Schleifen über das gesamte Array itteriert und die Methode <i>eggToString</i> auf jedes Ei aufgerufen. Der So gewonnene String wird dann in eine Datei geschrieben. Wenn der Algorithmus korrekt implementiert wurde sollten keine Fehler auftreten.
+
+<b>"File to Object"</b>
+Zuerst wird die gesamte Datei eingelesen [BuffredReader/FileInputStream/BufferedInputStream ???], dabei kann es zu einer <i>FileNotFoundException</i> oder einer <i>SecurityException</i> kommen. Erstere wird an den User zur behandlung weitergereicht, bei zweiterer wird die Ausführung abgebrochen da es sich um ein Schwerwigendes Security Problem handelt welches vermutich zur Laufzeit nicht behoben werden kann.
+Danach wird das eingelesene byte Array in einen String umgewandelt, dabei kann es zu Problemen mit der verwendeten Codierung kommen, (!) es ist fraglich ob das abgefangen werden kann.
+Der String wird dann nach dem ersten Zeilenumbruch durchsucht, der String wird dann in Teilstrings zerlegt. Der Teil vor dem Zeilenumbruch wird mit der Methode <i>stringToEgg</i> in ein Ei umgewandelt und in den Eierkarton für die Ausgabe geschrieben. Der Zeilenumbruch selbst wird gelöscht, mit dem Rest wird dieser Vorgang solange wiederholt bis der gesamte String verarbeitet wurde.
+
