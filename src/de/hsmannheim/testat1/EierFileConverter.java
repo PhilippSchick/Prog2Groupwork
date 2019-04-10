@@ -51,7 +51,8 @@ public class EierFileConverter {
 		BufferedReader input = new BufferedReader(new FileReader(filename));
 		ArrayList<Ei> list = new ArrayList<Ei>();
 		String s;
-		int x,y;
+		int x = 0;
+		int y = 0;
 		String [] f ;
 		Ei [] [] eier ;
 		while ((s = input.readLine())!= null) {
@@ -62,11 +63,35 @@ public class EierFileConverter {
 			ei.setDefekt(Boolean.parseBoolean(f[5]));
 			ei.setLegedatum(f[4]);
 			//eier [Integer.parseInt(f[0])][Integer.parseInt(f[1])] = new Ei();
-			list.add(ei);			
+			list.add(ei);	
+			if (x<Integer.parseInt(f[0])) {
+				x = Integer.parseInt(f[0]);
+			}
+			if (y<Integer.parseInt(f[1])) {
+				y = Integer.parseInt(f[1]);
+			}
+			
+		}
+		y++;
+		int r = list.size() % y;
+		eier = new Ei[x+1][];
+		for (int i = 0; i<x;i++) {
+			eier[i] = new Ei[y];
+		}
+		if ( r !=0) {
+			eier[x] = new Ei[r+1];
+		}else {
+			eier[x] = new Ei[y];
+		}
+		for(int i = 0;i<list.size();i++) {
+			eier[i%x][i%y] = list.get(i);
 		}
 		
 		
-		return null;
+		
+		
+		
+		return eier;
 	}
 
 }
