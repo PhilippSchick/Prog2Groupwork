@@ -1,12 +1,16 @@
 package de.hsmannheim.testat1;
 
 import java.io.BufferedOutputStream;
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.ArrayList;
 
 import uebung1a.Ei;
 
@@ -22,16 +26,17 @@ public class EierFileConverter {
 	 * 
 	 * @param eierkartonstapel The Eierkartonstapel
 	 * @param filename         The name of the file
-	 * @throws IOException 
+	 * @throws IOException eierToFile works only one time
 	 */
 	public void eierToFile(Ei[][] eierkartonstapel, String filename) throws IOException {
 		FileOutputStream out = new FileOutputStream(filename);
-		for(int i = 0;i<eierkartonstapel.length;i++) {
-			for(int y = 0;y<eierkartonstapel[i].length;y++) {
-				out.write((i +"|"+ y + "|"+ eierkartonstapel[i][y].getGewicht() + "|"+ eierkartonstapel[i][y].getGroesse()+"|"+ eierkartonstapel[i][y].getLegedatum()+"|"+ eierkartonstapel[i][y].getDefekt()+ "\r\n").getBytes());
+		for (int i = 0; i < eierkartonstapel.length; i++) {
+			for (int y = 0; y < eierkartonstapel[i].length; y++) {
+				out.write((i + "|" + y + "|" + eierkartonstapel[i][y].getGewicht() + "|"
+						+ eierkartonstapel[i][y].getGroesse() + "|" + eierkartonstapel[i][y].getLegedatum() + "|"
+						+ eierkartonstapel[i][y].getDefekt() + "\r\n").getBytes());
 			}
 		}
-		
 
 	}
 
@@ -40,22 +45,27 @@ public class EierFileConverter {
 	 * 
 	 * @param filename The name of the file
 	 * @return The Eierkartonstapel
+	 * @throws IOException 
 	 */
-	public Ei[][] fileToEier(String filename) {
-		return null;
-	}
-	
-	/**
-	 * Converts a {@link Ei} to a String
-	 * 
-	 * @param ei The {@link Ei}
-	 * @return The String representing the {@link Ei}
-	 */
-	private String eiToString(Ei ei) {
-		return null;
-	}
-	
-	private Ei stringToEi(String s) {
+	public Ei[][] fileToEier(String filename) throws IOException {
+		BufferedReader input = new BufferedReader(new FileReader(filename));
+		ArrayList<Ei> list = new ArrayList<Ei>();
+		String s;
+		int x,y;
+		String [] f ;
+		Ei [] [] eier ;
+		while ((s = input.readLine())!= null) {
+			Ei ei = new Ei();
+			f = input.readLine().split("\\|");
+			ei.setGewicht(Integer.parseInt(f[2]));
+			ei.getGroesse();
+			ei.setDefekt(Boolean.parseBoolean(f[5]));
+			ei.setLegedatum(f[4]);
+			//eier [Integer.parseInt(f[0])][Integer.parseInt(f[1])] = new Ei();
+			list.add(ei);			
+		}
+		
+		
 		return null;
 	}
 
