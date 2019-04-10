@@ -1,5 +1,13 @@
 package de.hsmannheim.testat1;
 
+import java.io.BufferedOutputStream;
+import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.OutputStream;
+
 import uebung1a.Ei;
 
 /**
@@ -14,8 +22,16 @@ public class EierFileConverter {
 	 * 
 	 * @param eierkartonstapel The Eierkartonstapel
 	 * @param filename         The name of the file
+	 * @throws IOException 
 	 */
-	public void eierToFile(Ei[][] eierkartonstapel, String filename) {
+	public void eierToFile(Ei[][] eierkartonstapel, String filename) throws IOException {
+		FileOutputStream out = new FileOutputStream(filename);
+		for(int i = 0;i<eierkartonstapel.length;i++) {
+			for(int y = 0;y<eierkartonstapel[i].length;y++) {
+				out.write((i +"|"+ y + "|"+ eierkartonstapel[i][y].getGewicht() + "|"+ eierkartonstapel[i][y].getGroesse()+"|"+ eierkartonstapel[i][y].getLegedatum()+"|"+ eierkartonstapel[i][y].getDefekt()+ "\r\n").getBytes());
+			}
+		}
+		
 
 	}
 
