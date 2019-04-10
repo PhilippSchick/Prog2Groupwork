@@ -79,7 +79,7 @@ public class EierFileConverter {
 			eier[x] = new Ei[y];
 		}
 		for(int i = 0;i<list.size();i++) {
-			eier[i%x][i%y] = list.get(i);
+			eier[i/y][i%y] = list.get(i);
 		}	
 		
 		return eier;
