@@ -47,6 +47,7 @@ public class EierFileConverter {
 	 * @return The Eierkartonstapel
 	 * @throws IOException 
 	 */
+
 	public Ei[][] fileToEier(String filename) throws IOException {
 		BufferedReader input = new BufferedReader(new FileReader(filename));
 		ArrayList<Ei> list = new ArrayList<Ei>();
@@ -85,13 +86,8 @@ public class EierFileConverter {
 		}
 		for(int i = 0;i<list.size();i++) {
 			eier[i%x][i%y] = list.get(i);
-		}
-		
-		
-		
-		
+		}	
 		
 		return eier;
 	}
-
 }
