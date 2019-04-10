@@ -28,7 +28,7 @@ public class EierFileConverter {
 	public Ei[][] fileToEier(String filename) {
 		return null;
 	}
-	
+
 	/**
 	 * Converts a {@link Ei} to a String
 	 * 
@@ -38,7 +38,13 @@ public class EierFileConverter {
 	private String eiToString(Ei ei) {
 		return null;
 	}
-	
+
+	/**
+	 * Converts a String back to a {@link Ei}
+	 * 
+	 * @param s The String
+	 * @return a {@link Ei}
+	 */
 	private Ei stringToEi(String s) {
 		return null;
 	}
