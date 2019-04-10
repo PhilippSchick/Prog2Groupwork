@@ -31,7 +31,7 @@ public class EierFileConverter {
 						+ eierkartonstapel[i][y].getDefekt() + "\r\n").getBytes());
 			}
 		}
-
+		out.close();
 	}
 
 	/**
@@ -39,49 +39,50 @@ public class EierFileConverter {
 	 * 
 	 * @param filename The name of the file
 	 * @return The Eierkartonstapel
-	 * @throws IOException 
+	 * @throws IOException
 	 */
 
 	public Ei[][] fileToEier(String filename) throws IOException {
 		BufferedReader input = new BufferedReader(new FileReader(filename));
 		ArrayList<Ei> list = new ArrayList<Ei>();
-		String s;
+
 		int x = 0;
 		int y = 0;
-		String [] f ;
-		Ei [] [] eier ;
-		while ((s = input.readLine())!= null) {
+		String[] f;
+		Ei[][] eier;
+		while (input.readLine() != null) {
 			Ei ei = new Ei();
 			f = input.readLine().split("\\|");
 			ei.setGewicht(Integer.parseInt(f[2]));
 			ei.getGroesse();
 			ei.setDefekt(Boolean.parseBoolean(f[5]));
 			ei.setLegedatum(f[4]);
-			//eier [Integer.parseInt(f[0])][Integer.parseInt(f[1])] = new Ei();
-			list.add(ei);	
-			if (x<Integer.parseInt(f[0])) {
+			// eier [Integer.parseInt(f[0])][Integer.parseInt(f[1])] = new Ei();
+			list.add(ei);
+			if (x < Integer.parseInt(f[0])) {
 				x = Integer.parseInt(f[0]);
 			}
-			if (y<Integer.parseInt(f[1])) {
+			if (y < Integer.parseInt(f[1])) {
 				y = Integer.parseInt(f[1]);
 			}
-			
+
 		}
 		y++;
 		int r = list.size() % y;
-		eier = new Ei[x+1][];
-		for (int i = 0; i<x;i++) {
+		eier = new Ei[x + 1][];
+		for (int i = 0; i < x; i++) {
 			eier[i] = new Ei[y];
 		}
-		if ( r !=0) {
-			eier[x] = new Ei[r+1];
-		}else {
+		if (r != 0) {
+			eier[x] = new Ei[r + 1];
+		} else {
 			eier[x] = new Ei[y];
 		}
-		for(int i = 0;i<list.size();i++) {
-			eier[i/y][i%y] = list.get(i);
-		}	
-		
+		for (int i = 0; i < list.size(); i++) {
+			eier[i / y][i % y] = list.get(i);
+		}
+		input.close();
+
 		return eier;
 	}
 }
