@@ -30,10 +30,12 @@ public class Main {
 		Ei[][] eierstapel;
 		EierFileConverter converter = new EierFileConverter();
 
+		//Generate eiNum * 100 Eier
 		for (int i = 0; i < eiNum; i++) {
 			try {
 				eierstapel = farm.liefereEier(100);
 			} catch (FarmDeliveryQuantityException e) {
+				// Fatal Error!
 				e.printStackTrace();
 				return;
 			}
@@ -42,28 +44,35 @@ public class Main {
 
 		// Eier counter
 		int n = 1;
+		
+		// Write all Eggs into files
 		while (!eierStack.isEmpty()) {
 			try {
 				converter.eierToFile(eierStack.pop(), "eier" + n++ + ".txt");
 			} catch (IOException e) {
+				// Fatal Error!
 				e.printStackTrace();
 				return;
 			}
 		}
 
+		// List of Eierstapel
 		LinkedList<Ei[][]> eierstapelList = new LinkedList<Ei[][]>();
 		
+		// Read all Eggs back in
 		for (int i = 0; i < eiNum; i++) {
 			try {
 				eierstapelList.add(converter.fileToEier("eier" + (i + 1) + ".txt"));
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
+				// Fatal Error!
 				e.printStackTrace();
+				return;
 			}
 		}
 		
 		Ostereifabrik fabrik = new Ostereifabrik();
 		
+		// Convert All Eggs to Ostereiern
 		for (Ei[][] eiS : eierstapelList) {
 			fabrik.wareneingang(eiS);
 		}
