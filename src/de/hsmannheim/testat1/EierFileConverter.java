@@ -39,34 +39,45 @@ public class EierFileConverter {
 	 * 
 	 * @param filename The name of the file
 	 * @return The Eierkartonstapel
-	 * @throws IOException
+	 * @throws IOException if an I/O-Error occurs
 	 */
 
 	public Ei[][] fileToEier(String filename) throws IOException {
-		BufferedReader input = new BufferedReader(new FileReader(filename));
+		// The File reader
+		BufferedReader reader = new BufferedReader(new FileReader(filename));
+
 		ArrayList<Ei> list = new ArrayList<Ei>();
 
 		int x = 0;
 		int y = 0;
-		String[] f;
+
+		// The input String
+		String input;
+		// The Input after it was split in its data fields
+		String[] splittedInput;
+
 		Ei[][] eier;
-		while (input.readLine() != null) {
+
+		while ((input = reader.readLine()) != null) {
+			splittedInput = input.split("\\|");
+
+			// Config new a Ei
 			Ei ei = new Ei();
-			f = input.readLine().split("\\|");
-			ei.setGewicht(Integer.parseInt(f[2]));
-			ei.getGroesse();
-			ei.setDefekt(Boolean.parseBoolean(f[5]));
-			ei.setLegedatum(f[4]);
-			// eier [Integer.parseInt(f[0])][Integer.parseInt(f[1])] = new Ei();
+			ei.setGewicht(Integer.parseInt(splittedInput[2]));
+			ei.setLegedatum(splittedInput[4]);
+			ei.setDefekt(Boolean.parseBoolean(splittedInput[5]));
+
 			list.add(ei);
-			if (x < Integer.parseInt(f[0])) {
-				x = Integer.parseInt(f[0]);
+			if (x < Integer.parseInt(splittedInput[0])) {
+				x = Integer.parseInt(splittedInput[0]);
 			}
-			if (y < Integer.parseInt(f[1])) {
-				y = Integer.parseInt(f[1]);
+			if (y < Integer.parseInt(splittedInput[1])) {
+				y = Integer.parseInt(splittedInput[1]);
 			}
 
 		}
+		reader.close();
+
 		y++;
 		int r = list.size() % y;
 		eier = new Ei[x + 1][];
@@ -81,7 +92,6 @@ public class EierFileConverter {
 		for (int i = 0; i < list.size(); i++) {
 			eier[i / y][i % y] = list.get(i);
 		}
-		input.close();
 
 		return eier;
 	}
