@@ -46,6 +46,7 @@ public class CheckRingBuffer {
 
 	/**
 	 * Returns a Egg from the Buffer
+	 * 
 	 * @throws BufferUnderflowException if there is no Egg to return
 	 * 
 	 * @return A Egg
@@ -66,6 +67,27 @@ public class CheckRingBuffer {
 	public boolean checkEgg() {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	/**
+	 * Sets a {@link Ei} into the Buffer on position <code>index</code>
+	 * 
+	 * @param index The position of the new item
+	 * @param ei    The new item
+	 */
+	private synchronized void setItem(int index, Ei ei) {
+		// TODO Auto-generated method stub
+	}
+
+	/**
+	 * Returns the {@link Ei} from the position <code>index</code> of the buffer
+	 * 
+	 * @param index The position of the item
+	 * @return a {@link Ei}
+	 */
+	private synchronized Ei getItem(int index) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
