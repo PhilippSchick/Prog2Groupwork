@@ -62,10 +62,21 @@ public class EierFileConverter {
 			splittedInput = input.split("\\|");
 
 			// Config new a Ei
-			Ei ei = new Ei();
+			Ei ei;
+
+			if (Boolean.parseBoolean(splittedInput[5]) == false) {
+				// get an intact Egg
+				do {
+					ei = new Ei();
+				} while (ei.getDefekt());
+
+			} else {
+				ei = new Ei();
+				ei.setDefekt(true);
+			}
+
 			ei.setGewicht(Integer.parseInt(splittedInput[2]));
 			ei.setLegedatum(splittedInput[4]);
-			ei.setDefekt(Boolean.parseBoolean(splittedInput[5]));
 
 			list.add(ei);
 			if (x < Integer.parseInt(splittedInput[0])) {
