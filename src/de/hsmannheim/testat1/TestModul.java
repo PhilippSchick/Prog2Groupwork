@@ -32,7 +32,7 @@ public class TestModul implements Runnable {
 				buffer.checkEgg();
 				Thread.sleep(50);
 			} catch (InterruptedException | BufferUnderflowException e) {
-				// TODO Auto-generated catch block
+				// Print StackTrace and continue
 				e.printStackTrace();
 			}
 		}
