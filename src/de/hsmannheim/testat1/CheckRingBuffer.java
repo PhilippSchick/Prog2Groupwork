@@ -23,17 +23,17 @@ public class CheckRingBuffer {
 	/**
 	 * The Output-Position of the Buffer
 	 */
-	private int outPointer;
+	private int outPointer = 0;
 
 	/**
 	 * The Input-Position of the Buffer
 	 */
-	private int inPointer;
+	private int inPointer = 0;
 
 	/**
 	 * The current Check Position
 	 */
-	private int checkPosition;
+	private int checkPosition = 0;
 
 	/**
 	 * Adds a new Egg to the Buffer
@@ -66,14 +66,14 @@ public class CheckRingBuffer {
 	 */
 	public boolean checkEgg() {
 
-		if (this.getItem(checkPosition) == null) {
+		if (checkPosition == inPointer) {
 			// No item to Check
 			throw new BufferUnderflowException();
 		}
 
 		if (this.getItem(checkPosition).getDefekt()) {
 
-			//Delete Egg
+			// Delete Egg
 			this.setItem(checkPosition, null);
 			this.stepChecker();
 
