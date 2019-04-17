@@ -27,12 +27,14 @@ public class TestModul implements Runnable {
 
 	@Override
 	public void run() {
-		try {
-			buffer.checkEgg();
-			Thread.sleep(50);
-		} catch (InterruptedException | BufferUnderflowException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		while (true) {
+			try {
+				buffer.checkEgg();
+				Thread.sleep(50);
+			} catch (InterruptedException | BufferUnderflowException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 
 	}
