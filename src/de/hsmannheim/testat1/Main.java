@@ -57,7 +57,7 @@ public class Main {
 		}
 
 		// List of Eierstapel
-		LinkedList<Ei[][]> eierstapelList = new LinkedList<Ei[][]>();
+		LinkedList<Ei[][]> eierstapelList = new LinkedList<>();
 
 		// Read all Eggs back in
 		for (int i = 0; i < eiNum; i++) {
