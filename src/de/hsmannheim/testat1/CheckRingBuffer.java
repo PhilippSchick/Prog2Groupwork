@@ -36,9 +36,10 @@ public class CheckRingBuffer {
 	/**
 	 * Adds a new Egg to the Buffer
 	 * 
+	 * @throws BufferOverflowException if no space is left in the Buffer
 	 * @param input The Egg to put in the Buffer
 	 */
-	public void enqueue(Ei input) {
+	public void enqueue(Ei input) throws BufferOverflowException {
 		if (inPointer == outPointer) {
 			throw new BufferOverflowException();
 		}
@@ -51,10 +52,9 @@ public class CheckRingBuffer {
 	 * Returns a Egg from the Buffer
 	 * 
 	 * @throws BufferUnderflowException if there is no Egg to return
-	 * 
 	 * @return A Egg
 	 */
-	public synchronized Ei dequeue() {
+	public synchronized Ei dequeue() throws BufferUnderflowException{
 		Ei ret;
 
 		do {
@@ -76,10 +76,9 @@ public class CheckRingBuffer {
 	 * deletes the Egg
 	 * 
 	 * @throws BufferUnderflowException if there isn't a Egg to Check
-	 * 
 	 * @return true if the Egg isn't defect
 	 */
-	public synchronized boolean checkEgg() {
+	public synchronized boolean checkEgg() throws BufferUnderflowException{
 
 		if (checkPosition == inPointer) {
 			// No item to Check
@@ -104,14 +103,14 @@ public class CheckRingBuffer {
 	/**
 	 * The Checker makes a step on the buffer
 	 */
-	private synchronized void stepChecker() {
+	private void stepChecker() {
 		checkPosition = ((--checkPosition) < 0 ? buffer.length - 1 : checkPosition);
 	}
 
 	/**
 	 * The inPointer makes a step on the buffer
 	 */
-	private synchronized void stepInPointer() {
+	private void stepInPointer() {
 		inPointer = ((--inPointer) < 0 ? buffer.length - 1 : inPointer);
 	}
 
