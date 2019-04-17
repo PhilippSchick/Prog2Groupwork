@@ -1,6 +1,3 @@
-/**
- * 
- */
 package de.hsmannheim.testat1;
 
 import java.nio.BufferUnderflowException;
@@ -13,19 +10,27 @@ import java.nio.BufferUnderflowException;
  *
  */
 public class TestModul implements Runnable {
-	//Creating a constructor with an object as a paramater
+
+	/**
+	 * The buffer to work on
+	 */
 	private CheckRingBuffer buffer;
-	public TestModul(CheckRingBuffer buffer ) {
-		this.buffer = buffer ;
+
+	/**
+	 * Generates a new instance of TestModul and sets the buffer to work on
+	 * 
+	 * @param buffer The buffer to work on
+	 */
+	public TestModul(CheckRingBuffer buffer) {
+		this.buffer = buffer;
 	}
 
 	@Override
 	public void run() {
-		// TODO Exceptionhandling with BufferUnderFLowException ( checkEgg() ) 
 		try {
 			buffer.checkEgg();
 			Thread.sleep(50);
-		} catch (InterruptedException| BufferUnderflowException e) { 
+		} catch (InterruptedException | BufferUnderflowException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
