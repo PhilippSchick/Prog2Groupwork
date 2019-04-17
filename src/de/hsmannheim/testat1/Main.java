@@ -30,7 +30,7 @@ public class Main {
 		Ei[][] eierstapel;
 		EierFileConverter converter = new EierFileConverter();
 
-		//Generate eiNum * 100 Eier
+		// Generate eiNum * 100 Eier
 		for (int i = 0; i < eiNum; i++) {
 			try {
 				eierstapel = farm.liefereEier(100);
@@ -44,7 +44,7 @@ public class Main {
 
 		// Eier counter
 		int n = 1;
-		
+
 		// Write all Eggs into files
 		while (!eierStack.isEmpty()) {
 			try {
@@ -58,7 +58,7 @@ public class Main {
 
 		// List of Eierstapel
 		LinkedList<Ei[][]> eierstapelList = new LinkedList<Ei[][]>();
-		
+
 		// Read all Eggs back in
 		for (int i = 0; i < eiNum; i++) {
 			try {
@@ -69,14 +69,37 @@ public class Main {
 				return;
 			}
 		}
-		
+
 		Ostereifabrik fabrik = new Ostereifabrik();
-		
+
 		// Convert All Eggs to Ostereiern
 		for (Ei[][] eiS : eierstapelList) {
 			fabrik.wareneingang(eiS);
 		}
-		
+
+		/*
+		 * ########## Assignment 2 ##########
+		 */
+
+		CheckRingBuffer buffer = new CheckRingBuffer();
+
+		// Generate the Modules
+		InputModul in0 = new InputModul(buffer);
+		InputModul in1 = new InputModul(buffer);
+		OutputModul out = new OutputModul(buffer);
+		TestModul test = new TestModul(buffer);
+
+		// Generate the threads
+		Thread testThread = new Thread(test);
+		Thread outThread = new Thread(out);
+		Thread inThread0 = new Thread(in0);
+		Thread inTHread1 = new Thread(in1);
+
+		// start Threads
+		testThread.start();
+		outThread.start();
+		inThread0.start();
+		inTHread1.start();
 	}
 
 }
