@@ -4,6 +4,7 @@
 package de.hsmannheim.testat1;
 
 import java.io.IOException;
+import java.nio.BufferUnderflowException;
 
 import uebung1a.Ei;
 
@@ -41,7 +42,7 @@ public class OutputModul implements Runnable {
 							eierkartons[n][i] = buffer.dequeue();
 							scounter = 0;
 							Thread.sleep(100);
-						} catch (InterruptedException e) {
+						} catch (InterruptedException| BufferUnderflowException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
 							try {

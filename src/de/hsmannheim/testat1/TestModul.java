@@ -3,6 +3,8 @@
  */
 package de.hsmannheim.testat1;
 
+import java.nio.BufferUnderflowException;
+
 /**
  * @author Jeremias Kunz, Daniel Reichel, Philipp Schick
  * @version 1.00, 15.04.2019
@@ -23,7 +25,7 @@ public class TestModul implements Runnable {
 		try {
 			buffer.checkEgg();
 			Thread.sleep(50);
-		} catch (InterruptedException e) { 
+		} catch (InterruptedException| BufferUnderflowException e) { 
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
