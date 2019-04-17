@@ -65,8 +65,22 @@ public class CheckRingBuffer {
 	 * @return true if the Egg isn't defect
 	 */
 	public boolean checkEgg() {
-		// TODO Auto-generated method stub
-		return false;
+
+		if (this.getItem(checkPosition) == null) {
+			// No item to Check
+			throw new BufferUnderflowException();
+		}
+
+		if (this.getItem(checkPosition).getDefekt()) {
+
+			//Delete Egg
+			this.setItem(checkPosition, null);
+			this.stepChecker();
+
+			return false;
+		} else {
+			return true;
+		}
 	}
 
 	/**
@@ -87,6 +101,13 @@ public class CheckRingBuffer {
 	 */
 	private synchronized Ei getItem(int index) {
 		return buffer[index];
+	}
+
+	/**
+	 * The Checker makes a step on the buffer
+	 */
+	private synchronized void stepChecker() {
+		checkPosition = ((--checkPosition) < 0 ? buffer.length - 1 : checkPosition);
 	}
 
 }
