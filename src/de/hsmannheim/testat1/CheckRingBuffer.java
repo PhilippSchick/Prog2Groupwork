@@ -21,12 +21,12 @@ public class CheckRingBuffer {
 	private Ei[] buffer = new Ei[50];
 
 	/**
-	 * The Output-Position of the Buffer
+	 * The Output-Position of the Buffer, points on the next Egg to return
 	 */
 	private int outPointer = 0;
 
 	/**
-	 * The Input-Position of the Buffer
+	 * The Input-Position of the Buffer, points on the next free position
 	 */
 	private int inPointer = 0;
 
@@ -51,9 +51,20 @@ public class CheckRingBuffer {
 	 * 
 	 * @return A Egg
 	 */
-	public Ei dequeue() {
-		// TODO Auto-generated method stub
-		return null;
+	public synchronized Ei dequeue() {
+		Ei ret;
+
+		do {
+			if (outPointer == checkPosition) {
+				throw new BufferUnderflowException();
+			}
+			ret = this.getItem(outPointer);
+			outPointer = (--outPointer) < 0 ? buffer.length - 1 : outPointer;
+
+		} while (ret == null);
+		//Delete the returned Egg
+		this.setItem(outPointer + 1, null);
+		return ret;
 	}
 
 	/**
