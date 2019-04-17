@@ -1,6 +1,3 @@
-/**
- * 
- */
 package de.hsmannheim.testat1;
 
 import java.io.IOException;
@@ -77,6 +74,7 @@ public class OutputModul implements Runnable {
 					converter.eierToFile(eierkartons, "eier-qm" + c + ".txt");
 					c++;
 				} catch (IOException e) {
+					// Fatal Error!
 					e.printStackTrace();
 					return;
 				}
@@ -88,6 +86,7 @@ public class OutputModul implements Runnable {
 						converter.eierToFile(eierkartons, "eier-qm" + c + ".txt");
 						c++;
 					} catch (IOException e) {
+						// Fatal Error!
 						e.printStackTrace();
 						return;
 					}
