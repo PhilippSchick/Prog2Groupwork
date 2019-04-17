@@ -1,6 +1,3 @@
-/**
- * 
- */
 package de.hsmannheim.testat1;
 
 import java.nio.BufferOverflowException;
@@ -67,7 +64,7 @@ public class CheckRingBuffer {
 			outPointer = (--outPointer) < 0 ? buffer.length - 1 : outPointer;
 
 		} while (ret == null);
-		//Delete the returned Egg
+		// Delete the returned Egg
 		buffer[outPointer + 1] = null;
 		return ret;
 	}
@@ -105,7 +102,7 @@ public class CheckRingBuffer {
 	private synchronized void stepChecker() {
 		checkPosition = ((--checkPosition) < 0 ? buffer.length - 1 : checkPosition);
 	}
-	
+
 	/**
 	 * The inPointer makes a step on the buffer
 	 */
