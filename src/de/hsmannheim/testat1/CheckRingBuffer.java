@@ -44,6 +44,7 @@ public class CheckRingBuffer {
 		}
 		buffer[inPointer] = input;
 		stepInPointer();
+		System.out.println("Egg add to Buffer");
 	}
 
 	/**
@@ -66,6 +67,7 @@ public class CheckRingBuffer {
 		} while (ret == null);
 		// Delete the returned Egg
 		buffer[outPointer + 1] = null;
+		System.out.println("Egg dequeued");
 		return ret;
 	}
 
@@ -90,8 +92,11 @@ public class CheckRingBuffer {
 			buffer[checkPosition] = null;
 			this.stepChecker();
 
+			System.out.println("Egg Checked: Deleted Egg");
+
 			return false;
 		} else {
+			System.out.println("Egg Checked");
 			return true;
 		}
 	}
