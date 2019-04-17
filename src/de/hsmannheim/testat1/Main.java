@@ -84,8 +84,8 @@ public class Main {
 		CheckRingBuffer buffer = new CheckRingBuffer();
 
 		// Generate the Modules
-		InputModul in0 = new InputModul(buffer);
-		InputModul in1 = new InputModul(buffer);
+		InputModul in0 = new InputModul(buffer, 1, 5);
+		InputModul in1 = new InputModul(buffer, 6, 10);
 		OutputModul out = new OutputModul(buffer);
 		TestModul test = new TestModul(buffer);
 
@@ -96,10 +96,11 @@ public class Main {
 		Thread inTHread1 = new Thread(in1);
 
 		// start Threads
-		testThread.start();
-		outThread.start();
 		inThread0.start();
 		inTHread1.start();
+		testThread.start();
+		outThread.start();
+		
 	}
 
 }

@@ -13,21 +13,22 @@ import java.nio.BufferUnderflowException;
  *
  */
 public class TestModul implements Runnable {
-	//Creating a constructor with an object as a paramater
+	// Creating a constructor with an object as a paramater
 	private CheckRingBuffer buffer;
-	public TestModul(CheckRingBuffer buffer ) {
-		this.buffer = buffer ;
+
+	public TestModul(CheckRingBuffer buffer) {
+		this.buffer = buffer;
 	}
 
 	@Override
 	public void run() {
-		// TODO Exceptionhandling with BufferUnderFLowException ( checkEgg() ) 
-		try {
-			buffer.checkEgg();
-			Thread.sleep(50);
-		} catch (InterruptedException| BufferUnderflowException e) { 
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		while (true) {
+			try {
+				buffer.checkEgg();
+				Thread.sleep(50);
+			} catch (InterruptedException | BufferUnderflowException e) {
+				e.printStackTrace();
+			}
 		}
 
 	}

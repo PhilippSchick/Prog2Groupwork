@@ -21,7 +21,7 @@ public class CheckRingBuffer {
 	/**
 	 * The Output-Position of the Buffer, points on the next Egg to return
 	 */
-	private int outPointer = 0;
+	private int outPointer = 1;
 
 	/**
 	 * The Input-Position of the Buffer, points on the next free position
@@ -32,6 +32,11 @@ public class CheckRingBuffer {
 	 * The current Check Position
 	 */
 	private int checkPosition = 0;
+	
+	/**
+	 * 
+	 */
+	private boolean checkStarted = false;
 
 	/**
 	 * Adds a new Egg to the Buffer
@@ -58,7 +63,7 @@ public class CheckRingBuffer {
 		Ei ret;
 
 		do {
-			if (outPointer == checkPosition) {
+			if (checkStarted && outPointer == checkPosition) {
 				throw new BufferUnderflowException();
 			}
 			ret = buffer[outPointer];
@@ -66,6 +71,7 @@ public class CheckRingBuffer {
 
 		} while (ret == null);
 		// Delete the returned Egg
+		// TODO kann über 50
 		buffer[outPointer + 1] = null;
 		System.out.println("Egg dequeued");
 		return ret;
@@ -84,6 +90,7 @@ public class CheckRingBuffer {
 			// No item to Check
 			throw new BufferUnderflowException();
 		}
+		checkStarted = true;
 
 		if (buffer[checkPosition].getDefekt()) {
 
