@@ -42,14 +42,16 @@ public class OutputModul implements Runnable {
 							eierkartons[n][i] = buffer.dequeue();
 							scounter = 0;
 							Thread.sleep(100);
-						} catch (InterruptedException| BufferUnderflowException e) {
-							// TODO Auto-generated catch block
+						} catch (InterruptedException e) {
 							e.printStackTrace();
+							return;
+
+						} catch(BufferUnderflowException e) {
+							// TODO Auto-generated catch block
 							try {
 								//wait 1 second , increases sleepcounter , and decrease for-loop parameters 
 								Thread.sleep(1000);
-								scounter++;
-								n--;
+								scounter++;								
 								i--;
 
 							} catch (InterruptedException e1) {
