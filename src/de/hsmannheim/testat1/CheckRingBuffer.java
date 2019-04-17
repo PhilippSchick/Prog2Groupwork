@@ -76,7 +76,7 @@ public class CheckRingBuffer {
 	 * @param ei    The new item
 	 */
 	private synchronized void setItem(int index, Ei ei) {
-		// TODO Auto-generated method stub
+		buffer[index] = ei;
 	}
 
 	/**
@@ -86,8 +86,7 @@ public class CheckRingBuffer {
 	 * @return a {@link Ei}
 	 */
 	private synchronized Ei getItem(int index) {
-		// TODO Auto-generated method stub
-		return null;
+		return buffer[index];
 	}
 
 }
