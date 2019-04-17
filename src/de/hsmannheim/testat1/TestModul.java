@@ -11,6 +11,11 @@ package de.hsmannheim.testat1;
  *
  */
 public class TestModul implements Runnable {
+	//Creating a constructor with an object as a paramater
+	private CheckRingBuffer buffer;
+	public TestModul(CheckRingBuffer buffer ) {
+		this.buffer = buffer ;
+	}
 
 	@Override
 	public void run() {
