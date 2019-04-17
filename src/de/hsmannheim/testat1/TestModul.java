@@ -19,7 +19,7 @@ public class TestModul implements Runnable {
 
 	@Override
 	public void run() {
-		// TODO Exceptionhandling with BufferUnderFLowException ( checkkEgg() ) 
+		// TODO Exceptionhandling with BufferUnderFLowException ( checkEgg() ) 
 		try {
 			buffer.checkEgg();
 			Thread.sleep(50);
