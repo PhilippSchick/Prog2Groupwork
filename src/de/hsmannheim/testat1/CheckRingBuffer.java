@@ -3,6 +3,7 @@
  */
 package de.hsmannheim.testat1;
 
+import java.nio.BufferOverflowException;
 import java.nio.BufferUnderflowException;
 
 import uebung1a.Ei;
@@ -21,19 +22,19 @@ public class CheckRingBuffer {
 	private Ei[] buffer = new Ei[50];
 
 	/**
-	 * The Output-Position of the Buffer
+	 * The Output-Position of the Buffer, points on the next Egg to return
 	 */
-	private int outPointer;
+	private int outPointer = 0;
 
 	/**
-	 * The Input-Position of the Buffer
+	 * The Input-Position of the Buffer, points on the next free position
 	 */
-	private int inPointer;
+	private int inPointer = 0;
 
 	/**
 	 * The current Check Position
 	 */
-	private int checkPosition;
+	private int checkPosition = 0;
 
 	/**
 	 * Adds a new Egg to the Buffer
@@ -41,7 +42,11 @@ public class CheckRingBuffer {
 	 * @param input The Egg to put in the Buffer
 	 */
 	public void enqueue(Ei input) {
-		// TODO Auto-generated method stub
+		if (inPointer == outPointer) {
+			throw new BufferOverflowException();
+		}
+		buffer[inPointer] = input;
+		stepInPointer();
 	}
 
 	/**
@@ -51,9 +56,20 @@ public class CheckRingBuffer {
 	 * 
 	 * @return A Egg
 	 */
-	public Ei dequeue() {
-		// TODO Auto-generated method stub
-		return null;
+	public synchronized Ei dequeue() {
+		Ei ret;
+
+		do {
+			if (outPointer == checkPosition) {
+				throw new BufferUnderflowException();
+			}
+			ret = buffer[outPointer];
+			outPointer = (--outPointer) < 0 ? buffer.length - 1 : outPointer;
+
+		} while (ret == null);
+		//Delete the returned Egg
+		buffer[outPointer + 1] = null;
+		return ret;
 	}
 
 	/**
@@ -64,30 +80,37 @@ public class CheckRingBuffer {
 	 * 
 	 * @return true if the Egg isn't defect
 	 */
-	public boolean checkEgg() {
-		// TODO Auto-generated method stub
-		return false;
+	public synchronized boolean checkEgg() {
+
+		if (checkPosition == inPointer) {
+			// No item to Check
+			throw new BufferUnderflowException();
+		}
+
+		if (buffer[checkPosition].getDefekt()) {
+
+			// Delete Egg
+			buffer[checkPosition] = null;
+			this.stepChecker();
+
+			return false;
+		} else {
+			return true;
+		}
 	}
 
 	/**
-	 * Sets a {@link Ei} into the Buffer on position <code>index</code>
-	 * 
-	 * @param index The position of the new item
-	 * @param ei    The new item
+	 * The Checker makes a step on the buffer
 	 */
-	private synchronized void setItem(int index, Ei ei) {
-		// TODO Auto-generated method stub
+	private synchronized void stepChecker() {
+		checkPosition = ((--checkPosition) < 0 ? buffer.length - 1 : checkPosition);
 	}
-
+	
 	/**
-	 * Returns the {@link Ei} from the position <code>index</code> of the buffer
-	 * 
-	 * @param index The position of the item
-	 * @return a {@link Ei}
+	 * The inPointer makes a step on the buffer
 	 */
-	private synchronized Ei getItem(int index) {
-		// TODO Auto-generated method stub
-		return null;
+	private synchronized void stepInPointer() {
+		inPointer = ((--inPointer) < 0 ? buffer.length - 1 : inPointer);
 	}
 
 }
