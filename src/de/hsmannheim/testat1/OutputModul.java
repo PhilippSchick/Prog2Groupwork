@@ -11,6 +11,15 @@ package de.hsmannheim.testat1;
  *
  */
 public class OutputModul implements Runnable {
+	
+	
+	// create an object of checkringbuffer 
+	public CheckRingBuffer buffer;
+	
+	public OutputModul(CheckRingBuffer buffer) {
+		this.buffer=buffer;
+	}
+	
 
 	@Override
 	public void run() {

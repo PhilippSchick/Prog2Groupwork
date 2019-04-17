@@ -10,7 +10,13 @@ package de.hsmannheim.testat1;
  *          Reads Eggs from Files and puts them on the {@link CheckRingBuffer}
  */
 public class InputModul implements Runnable {
-
+	//creating an object from CheckRingBuffer and giving the constructor the object 
+	private CheckRingBuffer buffer;
+	public InputModul(CheckRingBuffer buffer) {
+		this.buffer = buffer;
+		
+	}
+	
 	@Override
 	public void run() {
 		// TODO Auto-generated method stub
