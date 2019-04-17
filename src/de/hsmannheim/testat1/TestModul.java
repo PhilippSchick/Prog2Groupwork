@@ -19,7 +19,14 @@ public class TestModul implements Runnable {
 
 	@Override
 	public void run() {
-		// TODO Auto-generated method stub
+		// TODO Exceptionhandling with BufferUnderFLowException ( checkkEgg() ) 
+		try {
+			buffer.checkEgg();
+			Thread.sleep(50);
+		} catch (InterruptedException e) { 
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 	}
 
