@@ -1,10 +1,8 @@
-/**
- * 
- */
 package de.hsmannheim.testat1;
 
 import java.io.IOException;
 import java.util.LinkedList;
+import java.util.ListIterator;
 import java.util.Stack;
 
 import uebung1a.Ei;
@@ -72,9 +70,10 @@ public class Main {
 
 		Ostereifabrik fabrik = new Ostereifabrik();
 
-		// Convert All Eggs to Ostereiern
-		for (Ei[][] eiS : eierstapelList) {
-			fabrik.wareneingang(eiS);
+		// Convert All Eggs to Ostereiern	
+		ListIterator<Ei[][]> iterator = eierstapelList.listIterator();
+		while (iterator.hasNext()) {
+			fabrik.wareneingang(iterator.next());
 		}
 
 		/*
