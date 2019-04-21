@@ -32,11 +32,6 @@ public class CheckRingBuffer {
 	 * The current Check Position
 	 */
 	private int checkPosition = 0;
-	
-	/**
-	 * 
-	 */
-	private boolean checkStarted = false;
 
 	/**
 	 * Adds a new Egg to the Buffer
@@ -49,7 +44,7 @@ public class CheckRingBuffer {
 			throw new BufferOverflowException();
 		}
 		buffer[inPointer] = input;
-		stepInPointer();
+		inPointer = this.decStep(inPointer);
 		System.out.println("Egg add to Buffer");
 	}
 
@@ -59,20 +54,27 @@ public class CheckRingBuffer {
 	 * @throws BufferUnderflowException if there is no Egg to return
 	 * @return A Egg
 	 */
-	public synchronized Ei dequeue() throws BufferUnderflowException{
+	public synchronized Ei dequeue() throws BufferUnderflowException {
 		Ei ret;
 
 		do {
-			if (checkStarted && outPointer == checkPosition) {
-				throw new BufferUnderflowException();
-			}
 			ret = buffer[outPointer];
-			outPointer = (--outPointer) < 0 ? buffer.length - 1 : outPointer;
 
+			// do a step if the next Position isn't the checkPosition
+			int nextPos = decStep(outPointer);
+			if (nextPos == checkPosition) {
+				// if you can't step to the next position and the current is null throw a
+				// Exception
+				if (ret == null) {
+					throw new BufferUnderflowException();
+				}
+			} else {
+				outPointer = nextPos;
+			}
 		} while (ret == null);
+
 		// Delete the returned Egg
-		// TODO kann über 50
-		buffer[outPointer + 1] = null;
+		buffer[(outPointer + 1) % buffer.length] = null;
 		System.out.println("Egg dequeued");
 		return ret;
 	}
@@ -84,19 +86,18 @@ public class CheckRingBuffer {
 	 * @throws BufferUnderflowException if there isn't a Egg to Check
 	 * @return true if the Egg isn't defect
 	 */
-	public synchronized boolean checkEgg() throws BufferUnderflowException{
+	public synchronized boolean checkEgg() throws BufferUnderflowException {
 
 		if (checkPosition == inPointer) {
 			// No item to Check
 			throw new BufferUnderflowException();
 		}
-		checkStarted = true;
 
 		if (buffer[checkPosition].getDefekt()) {
 
 			// Delete Egg
 			buffer[checkPosition] = null;
-			this.stepChecker();
+			checkPosition = this.decStep(checkPosition);
 
 			System.out.println("Egg Checked: Deleted Egg");
 
@@ -108,17 +109,13 @@ public class CheckRingBuffer {
 	}
 
 	/**
-	 * The Checker makes a step on the buffer
+	 * Does a decrementing step on the Buffer
+	 * 
+	 * @param pos The current Position
+	 * @return The next Position
 	 */
-	private void stepChecker() {
-		checkPosition = ((--checkPosition) < 0 ? buffer.length - 1 : checkPosition);
-	}
-
-	/**
-	 * The inPointer makes a step on the buffer
-	 */
-	private void stepInPointer() {
-		inPointer = ((--inPointer) < 0 ? buffer.length - 1 : inPointer);
+	private int decStep(int pos) {
+		return (--pos) < 0 ? buffer.length - 1 : pos;
 	}
 
 }
