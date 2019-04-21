@@ -97,12 +97,12 @@ public class CheckRingBuffer {
 
 			// Delete Egg
 			buffer[checkPosition] = null;
-			checkPosition = this.decStep(checkPosition);
 
 			System.out.println("Egg Checked: Deleted Egg");
 
 			return false;
 		} else {
+			checkPosition = this.decStep(checkPosition);
 			System.out.println("Egg Checked");
 			return true;
 		}
