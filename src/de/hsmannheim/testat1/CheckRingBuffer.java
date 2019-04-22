@@ -43,7 +43,9 @@ public class CheckRingBuffer {
 		if (inPointer == outPointer) {
 			throw new BufferOverflowException();
 		}
+		
 		buffer[inPointer] = input;
+		//TODO darf nicht auf outpointer laufen
 		inPointer = this.decStep(inPointer);
 		System.out.println("Egg add to Buffer");
 	}
@@ -93,18 +95,50 @@ public class CheckRingBuffer {
 			throw new BufferUnderflowException();
 		}
 
-		if (buffer[checkPosition].getDefekt()) {
+		try {
 
-			// Delete Egg
-			buffer[checkPosition] = null;
+			if (buffer[checkPosition].getDefekt()) {
 
-			System.out.println("Egg Checked: Deleted Egg");
+				// Delete Egg
+				buffer[checkPosition] = null;
 
-			return false;
-		} else {
-			checkPosition = this.decStep(checkPosition);
+				int nextPos = decStep(checkPosition);
+				if (nextPos == outPointer) {
+					// if you can't step to the next position throw a Exception
+					throw new BufferUnderflowException();
+				} else {
+					checkPosition = nextPos;
+				}
+
+				System.out.println("Egg Checked: Deleted Egg");
+				return false;
+			} else {
+
+				int nextPos = decStep(checkPosition);
+				if (nextPos == outPointer) {
+					// if you can't step to the next position throw a Exception
+					throw new BufferUnderflowException();
+				} else {
+					checkPosition = nextPos;
+				}
+
+				System.out.println("Egg Checked");
+				return true;
+			}
+
+		} catch (NullPointerException e) {
+			// At the beginning the output position is empty for technical reasons
+
+			int nextPos = decStep(checkPosition);
+			if (nextPos == outPointer) {
+				// if you can't step to the next position throw a Exception
+				throw new BufferUnderflowException();
+			} else {
+				checkPosition = nextPos;
+			}
+
 			System.out.println("Egg Checked");
-			return true;
+			return false;
 		}
 	}
 
