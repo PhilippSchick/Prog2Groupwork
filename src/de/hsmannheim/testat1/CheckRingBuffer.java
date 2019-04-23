@@ -40,14 +40,21 @@ public class CheckRingBuffer {
 	 * @param input The Egg to put in the Buffer
 	 */
 	public void enqueue(Ei input) throws BufferOverflowException {
-		if (inPointer == outPointer) {
+		if (inPointer == outPointer || buffer[inPointer] != null) {
 			throw new BufferOverflowException();
 		}
-		
+
 		buffer[inPointer] = input;
-		//TODO darf nicht auf outpointer laufen
-		inPointer = this.decStep(inPointer);
 		System.out.println("Egg add to Buffer");
+
+		//TODO aktuelle position wird nicht
+		int nextPos = decStep(inPointer);
+		if (nextPos == outPointer) {
+			// if you can't step to the next position throw a Exception
+			throw new BufferOverflowException();
+		} else {
+			inPointer = nextPos;
+		}	
 	}
 
 	/**
