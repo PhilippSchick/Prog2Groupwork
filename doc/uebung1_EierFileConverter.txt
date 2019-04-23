@@ -6,5 +6,6 @@ Die Methode <i>eierToFile</i> nimmt den Eierkartonstarpel als zweidimensionales 
 <b>"File to Object"</b>
 Zuerst wird die gesamte Datei eingelesen [BuffredReader/FileInputStream/BufferedInputStream ???], dabei kann es zu einer <i>FileNotFoundException</i> oder einer <i>SecurityException</i> kommen. Erstere wird an den User zur behandlung weitergereicht, bei zweiterer wird die Ausführung abgebrochen da es sich um ein Schwerwigendes Security Problem handelt welches vermutich zur Laufzeit nicht behoben werden kann.
 Danach wird das eingelesene byte Array in einen String umgewandelt, dabei kann es zu Problemen mit der verwendeten Codierung kommen, (!) es ist fraglich ob das abgefangen werden kann.
-Der String wird dann nach dem ersten Zeilenumbruch durchsucht, der String wird dann in Teilstrings zerlegt. Der Teil vor dem Zeilenumbruch wird mit der Methode <i>stringToEgg</i> in ein Ei umgewandelt und in den Eierkarton für die Ausgabe geschrieben. Der Zeilenumbruch selbst wird gelöscht, mit dem Rest wird dieser Vorgang solange wiederholt bis der gesamte String verarbeitet wurde.
+Der String wird dann nach dem ersten Zeilenumbruch durchsucht, der String wird dann in Teilstrings zerlegt. Die einzelnen Teilstrings werden dann wieder zu einem Ei zugeführt in dem man den TeilStrings ihrer Eigenschaft zuordent; Defekt, Gewicht etc .
+Das wiederholt man bis man alle Eier wieder erhält und das endgültige Array dem Anfangs-Array gleicht.
 
