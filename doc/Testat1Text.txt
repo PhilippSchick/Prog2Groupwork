@@ -1,0 +1,7 @@
+Geplante Klassen : InputModul , OutModul , TestModul , CheckRingBuffer , Main , EierFileConverter ( Klasse von der Aufgabe davor )
+Was wir wiederverwenden können : EierFileConverter-Methoden, die ganze OstereiProduktion aus der vorherigen Aufgabe, da sie uns die Eier liefert die wir verwenden werden, die auch im Buffer landen werden.
+Lösung der Parallelität:->Die Text-Dateien werden den zwei InputModulen zugeordnet, sodass sie nicht beide die gleiche Textdatei bearbeiten-
+			->Nutzung von Threads und ihre Warte-Methoden
+			->Das Auslesen/Einschreiben/Checken des Buffers dürfen sich nicht behindern
+
+Probleme: Exception-Handling ? Timing der Pointers und Timing der Einschreiber und Ausleser 
