@@ -19,7 +19,7 @@ public class OutputModul implements Runnable {
 
 	// create an object of checkringbuffer
 	public CheckRingBuffer buffer;
-	public EierFileConverter converter;
+	public EierFileConverter converter = new EierFileConverter();
 
 	public OutputModul(CheckRingBuffer buffer) {
 		this.buffer = buffer;
@@ -33,7 +33,6 @@ public class OutputModul implements Runnable {
 		int scounter = 0; // sleep counter if we wait 10 seconds
 		while (true) {
 			Ei[][] eierkartons = new Ei[4][25]; // array that we print into document
-			if (scounter < 10) {
 				//filling the eierkartons if its possible
 				for (int n = 0; n < 4; n++) {
 					for (int i = 0; i < 25; i++) {
@@ -51,8 +50,14 @@ public class OutputModul implements Runnable {
 							try {
 								//wait 1 second , increases sleepcounter , and decrease for-loop parameters 
 								Thread.sleep(1000);
-								scounter++;								
-								i--;
+								scounter++;		
+								if(scounter==10) {
+									n=4;
+									i=25;
+								}
+								else {
+									i--;
+								}
 
 							} catch (InterruptedException e1) {
 								// TODO Auto-generated catch block
@@ -63,25 +68,17 @@ public class OutputModul implements Runnable {
 				}
 				//transform eierkartons into a text-document
 				try {
-					converter.eierToFile(eierkartons, "eier-qm" + c + ".txt");
-					c++;
+					if(eierkartons[0][0]!=null) {
+						converter.eierToFile(eierkartons, "eier-qm" + c + ".txt");
+						c++;
+						scounter = 0;
+					}
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			// here we land if the sleepcounter == 10, we waited 10 seconds
-			} else {
-				//if the array is empty do nothing 
-				if (eierkartons[0][0] != null) {
-					try {
-						converter.eierToFile(eierkartons, "eier-qm" + c + ".txt");
-						c++;
-					} catch (IOException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-				}
-			}
+			
 		}
 
 	}

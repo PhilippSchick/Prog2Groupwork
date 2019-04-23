@@ -21,7 +21,7 @@ public class CheckRingBuffer {
 	/**
 	 * The Output-Position of the Buffer, points on the next Egg to return
 	 */
-	private int outPointer = 1;
+	private int outPointer = 0;
 
 	/**
 	 * The Input-Position of the Buffer, points on the next free position

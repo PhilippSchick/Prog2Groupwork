@@ -65,7 +65,12 @@ public class InputModul implements Runnable {
 							// if the CheckRingBuffer is full, the thread yield and for loop gets reseted
 						} catch (BufferOverflowException e) {
 							m--;
-							Thread.yield();
+							try {
+								Thread.sleep(50);
+							} catch (InterruptedException e1) {
+								// TODO Auto-generated catch block
+								e1.printStackTrace();
+							}
 						}
 					}
 				}

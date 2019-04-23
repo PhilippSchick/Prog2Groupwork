@@ -26,9 +26,12 @@ public class EierFileConverter {
 		FileOutputStream out = new FileOutputStream(filename);
 		for (int i = 0; i < eierkartonstapel.length; i++) {
 			for (int y = 0; y < eierkartonstapel[i].length; y++) {
-				out.write((i + "|" + y + "|" + eierkartonstapel[i][y].getGewicht() + "|"
-						+ eierkartonstapel[i][y].getGroesse() + "|" + eierkartonstapel[i][y].getLegedatum() + "|"
-						+ eierkartonstapel[i][y].getDefekt() + "\r\n").getBytes());
+				if(eierkartonstapel[i][y]!=null) {
+					System.out.println(eierkartonstapel[i][y].getLegedatum());
+					out.write((i + "|" + y + "|" + eierkartonstapel[i][y].getGewicht() + "|"
+							+ eierkartonstapel[i][y].getGroesse() + "|" + eierkartonstapel[i][y].getLegedatum() + "|"
+							+ eierkartonstapel[i][y].getDefekt() + "\r\n").getBytes());
+				}
 			}
 		}
 		out.close();
