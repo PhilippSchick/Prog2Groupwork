@@ -1,11 +1,13 @@
 package de.hsmannheim.ArcheProject;
 
+import java.util.ArrayList;
+
 /**
  * (NULL)
  * @author
  *
  */
-public class Stall<T extends Tier> {
+public class Stall<T extends Tier> extends ArrayList<Tier> {
 
 	public Stall() {
 		
