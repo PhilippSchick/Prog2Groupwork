@@ -25,6 +25,7 @@ public class Stall<T extends Tier> extends ArrayList<Tier> {
 	/**
 	 * @return String
 	 */
+	@Override
 	public String toString() {
 		return null;
 		// TODO Auto-generated method stub
