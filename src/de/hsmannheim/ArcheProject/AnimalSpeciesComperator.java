@@ -3,15 +3,13 @@ package de.hsmannheim.ArcheProject;
 import java.util.Comparator;
 
 /**
- * (NULL)
- * @author
+ * @author Jeremias Kunz, Daniel Reichel, Philipp Schick
+ * 
+ *         Compares {@link Tier} based on there tierart, comparison is based on
+ *         the lexicographical order of tierart
  *
  */
 public class AnimalSpeciesComperator extends Tier implements Comparator<Tier> {
-
-	public AnimalSpeciesComperator() {
-		
-	}
 
 	/**
 	 * @param o1
@@ -25,4 +23,3 @@ public class AnimalSpeciesComperator extends Tier implements Comparator<Tier> {
 	}
 
 }
-
