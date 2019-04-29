@@ -11,11 +11,6 @@ import java.util.Comparator;
  */
 public class AnimalSpeciesComperator extends Tier implements Comparator<Tier> {
 
-	/**
-	 * @param o1
-	 * @param o2
-	 * @return int
-	 */
 	@Override
 	public int compare(Tier o1, Tier o2) {
 		return -1;
