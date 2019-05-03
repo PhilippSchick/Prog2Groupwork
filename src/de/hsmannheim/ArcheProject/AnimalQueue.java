@@ -9,17 +9,29 @@ import java.util.LinkedList;
  */
 public class AnimalQueue extends LinkedList<Tier> {
 
-	public AnimalQueue() {
-
+	public AnimalQueue(int numberofAnimals) {
+		while (numberofAnimals > 0) {
+			addFirst(Tiergenerator.getTier());
+			numberofAnimals--;
+		}
 	}
 
 	/**
 	 * All {@link Vogel} will be removed from the Queue
-	 * 
+	 * if the object is from Vogel , its getting removed 
 	 * @return the number of {@link Vogel} flown away
 	 */
 	public int sturm() {
-		return -1;
+		int counter =0;
+		for (int i = 0; i < size(); i++) {
+			if (get(i) instanceof Vogel) {
+				remove(i);
+				i--;
+				counter++;
+			}
+
+		}
+		return counter;
 		// TODO Auto-generated method stub
 	}
 
@@ -31,8 +43,17 @@ public class AnimalQueue extends LinkedList<Tier> {
 	 * @return the number of Animals eaten
 	 */
 	public int grossesFressen() {
-		return -1;
-		// TODO Auto-generated method stub
+		int counter = 0 ;
+		for (int i =0; i <size(); i++) {
+			if (get(i).getRaubtier() && (i + 1  != size())) {
+				if (get(i + 1).getRaubtier() != true /*|| get(i + 1).getTierart().equals("giftReptil")*/) {
+					remove(i + 1);
+					counter++;
+				}
+			}
+
+		}
+		return counter;
 	}
 
 	/**
@@ -40,6 +61,22 @@ public class AnimalQueue extends LinkedList<Tier> {
 	 */
 	public void printWarteschlange() {
 		// TODO Auto-generated method stub
+		for (int i = 0; i < size(); i++) {
+			System.out.print(get(i).getTierart() + "(" + get(i).getGeschlecht() + ")" + "|");
+		}
+
 	}
 
+	public static void main(String[] args) {
+		AnimalQueue queue = new AnimalQueue(10);
+		queue.printWarteschlange();
+		queue.sturm();
+		System.out.println();
+		queue.printWarteschlange();
+		queue.grossesFressen();
+		System.out.println();
+		queue.printWarteschlange();
+		
+
+	}
 }
