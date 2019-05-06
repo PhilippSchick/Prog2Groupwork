@@ -3,7 +3,7 @@ package de.hsmannheim.ArcheProject;
 /**
  * @author Jeremias Kunz, Daniel Reichel, Philipp Schick
  *
- * Keeps {@link Tier} of every Subtype in there own {@link Stall}
+ *         Keeps {@link Tier} of every Subtype in there own {@link Stall}
  */
 public class Arche {
 	private Stall<Vogel> birds = new Stall<Vogel>();
@@ -26,7 +26,16 @@ public class Arche {
 	 * Prints a representation of the {@link Arche} on the Console
 	 */
 	public void printStallbelegung() {
-		// TODO Auto-generated method stub
+		System.out.println("Vogel-Stall");
+		System.out.println(birds.toString() + "\n");
+		System.out.println("-----------------------------------------------------------------");
+
+		System.out.println("Säuger-Stall");
+		System.out.println(mammals.toString() + "\n");
+		System.out.println("-----------------------------------------------------------------");
+
+		System.out.println("Reptilien-Stall");
+		System.out.println(reptile.toString());
 	}
 
 	/**
