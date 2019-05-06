@@ -60,23 +60,9 @@ public class AnimalQueue extends LinkedList<Tier> {
 	 * Prints a representation of the queue on the Console
 	 */
 	public void printWarteschlange() {
-		// TODO Auto-generated method stub
 		for (int i = 0; i < size(); i++) {
 			System.out.print(get(i).getTierart() + "(" + get(i).getGeschlecht() + ")" + "|");
 		}
-
-	}
-
-	public static void main(String[] args) {
-		AnimalQueue queue = new AnimalQueue(10);
-		queue.printWarteschlange();
-		queue.sturm();
-		System.out.println();
-		queue.printWarteschlange();
-		queue.grossesFressen();
-		System.out.println();
-		queue.printWarteschlange();
-		
 
 	}
 }
