@@ -11,8 +11,7 @@ public class AnimalSexComperator extends Tier implements Comparator<Tier> {
 
 	@Override
 	public int compare(Tier arg0, Tier arg1) {
-		// TODO Auto-generated method stub
-		return 0;
+		return String.valueOf(arg0.getGeschlecht()).compareTo(String.valueOf(arg1.getGeschlecht()));
 	}
 
 }
