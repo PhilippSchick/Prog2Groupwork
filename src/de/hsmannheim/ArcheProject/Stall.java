@@ -26,8 +26,12 @@ public class Stall<T extends Tier> extends ArrayList<Tier> {
 
 	@Override
 	public String toString() {
-		return null;
-		// TODO Auto-generated method stub
+		String ret = "";
+		
+		for (int i = 0; i < size(); i++) {
+			ret = (get(i).getTierart() + "(" + get(i).getGeschlecht() + ")" + "|");
+		}
+		return ret;
 	}
 
 }
