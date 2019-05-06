@@ -32,7 +32,6 @@ public class AnimalQueue extends LinkedList<Tier> {
 
 		}
 		return counter;
-		// TODO Auto-generated method stub
 	}
 
 	/**
@@ -63,6 +62,6 @@ public class AnimalQueue extends LinkedList<Tier> {
 		for (int i = 0; i < size(); i++) {
 			System.out.print(get(i).getTierart() + "(" + get(i).getGeschlecht() + ")" + "|");
 		}
-
+		System.out.println();
 	}
 }
