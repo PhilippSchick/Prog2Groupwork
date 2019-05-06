@@ -13,8 +13,7 @@ public class AnimalSpeciesComperator extends Tier implements Comparator<Tier> {
 
 	@Override
 	public int compare(Tier o1, Tier o2) {
-		return -1;
-		// TODO Auto-generated method stub
+		return o1.getTierart().compareTo(o2.getTierart());
 	}
 
 }
