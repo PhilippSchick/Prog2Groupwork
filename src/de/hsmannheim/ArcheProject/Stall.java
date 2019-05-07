@@ -20,16 +20,33 @@ public class Stall<T extends Tier> extends ArrayList<Tier> {
 	 *         and sex in the {@link Stall}
 	 */
 	public boolean add(T e) {
+		boolean exist = true;
+		// for loop checks if there already is the same species with the same sex,
+		// if it is the case the animal that should be added gets skipped
+		for (int i = 0; i < size(); i++) {
+			if (get(i).getTierart().equals(e.getTierart()) && get(i).getGeschlecht() == e.getGeschlecht()) {
+				exist = false;
+			}
+
+		}
+		//adding the animal
+		//normal add does not  work, why? no clue.
+		if (exist) {
+			add(size(),e);
+			sort(new AnimalSpeciesComperator());
+			return true;
+		}
+
 		return false;
-		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
 	public String toString() {
 		String ret = "";
-		
+
 		for (int i = 0; i < size(); i++) {
-			ret = (get(i).getTierart() + "(" + get(i).getGeschlecht() + ")" + "|");
+			ret+= (get(i).getTierart() + "(" + get(i).getGeschlecht() + ")" + "|");
 		}
 		return ret;
 	}
