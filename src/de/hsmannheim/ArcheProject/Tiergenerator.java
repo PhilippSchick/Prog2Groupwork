@@ -9,12 +9,12 @@ public class Tiergenerator {
 	private static String [] raubvogel = {"Adler", "Falke", "Eule"};
 	private static String[] vogel = {"Huhn", "Papagei", "Amsel", "Taube", "Specht", "Fink"};
 	
-	private static String[] raubSaeuger = { "L�we", "Tiger", "B�r", "Leopard"};
+	private static String[] raubSaeuger = { "Loewe", "Tiger", "Baer", "Leopard"};
 	private static String[] saeuger = {"Ziege", "Schaf", "Kuh", "Affe", "Giraffe"};
 	
 	private static String[] giftReptil = {"Kobra", "Kreuzotter"};
 	private static String[] raubReptil = {"Phyton", "Krokodil"};
-	private static String[] reptil = {"Schildkr�te", "Echse"};
+	private static String[] reptil = {"Schildkroete", "Echse"};
 	
 	
 	public static Tier getTier() {

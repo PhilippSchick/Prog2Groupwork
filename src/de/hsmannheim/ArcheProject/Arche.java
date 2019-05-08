@@ -18,8 +18,16 @@ public class Arche {
 	 *         and sex in the {@link Arche}
 	 */
 	public boolean add(Tier animal) {
+		if (animal instanceof Saeuger) {
+			birds.add(animal);
+		}
+		if (animal instanceof Vogel) {
+			mammals.add(animal);
+		}
+		if (animal instanceof Reptil) {
+			reptile.add(animal);
+		}
 		return false;
-		// TODO Auto-generated method stub
 	}
 
 	/**
