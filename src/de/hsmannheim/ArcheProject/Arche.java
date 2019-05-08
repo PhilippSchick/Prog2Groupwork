@@ -18,10 +18,10 @@ public class Arche {
 	 *         and sex in the {@link Arche}
 	 */
 	public boolean add(Tier animal) {
-		if (animal instanceof Saeuger) {
+		if (animal instanceof Vogel) {
 			birds.add(animal);
 		}
-		if (animal instanceof Vogel) {
+		if (animal instanceof Saeuger) {
 			mammals.add(animal);
 		}
 		if (animal instanceof Reptil) {
