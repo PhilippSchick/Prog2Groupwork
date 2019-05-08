@@ -19,13 +19,13 @@ public class Arche {
 	 */
 	public boolean add(Tier animal) {
 		if (animal instanceof Vogel) {
-			birds.add(animal);
+			birds.add((Vogel) animal);
 		}
 		if (animal instanceof Saeuger) {
-			mammals.add(animal);
+			mammals.add((Saeuger) animal);
 		}
 		if (animal instanceof Reptil) {
-			reptile.add(animal);
+			reptile.add((Reptil) animal);
 		}
 		return false;
 	}
