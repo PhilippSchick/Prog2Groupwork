@@ -8,6 +8,10 @@ import java.util.LinkedList;
  *         A Queue for instances of {@link Tier}
  */
 public class AnimalQueue extends LinkedList<Tier> {
+	
+	public AnimalQueue() {
+		
+	}
 
 	public AnimalQueue(int numberofAnimals) {
 		while (numberofAnimals > 0) {

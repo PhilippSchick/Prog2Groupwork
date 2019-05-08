@@ -20,6 +20,8 @@ public class Main_2 {
 			arch.add(animal);
 		}
 		arch.printStallbelegung();
+		arch.erstelleFuetterungsWarteschlangen();
+		
 
 	}
 

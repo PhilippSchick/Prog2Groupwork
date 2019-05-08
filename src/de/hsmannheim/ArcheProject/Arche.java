@@ -1,5 +1,7 @@
 package de.hsmannheim.ArcheProject;
 
+import java.util.Collection;
+
 /**
  * @author Jeremias Kunz, Daniel Reichel, Philipp Schick
  *
@@ -9,6 +11,9 @@ public class Arche {
 	private Stall<Vogel> birds = new Stall<Vogel>();
 	private Stall<Saeuger> mammals = new Stall<Saeuger>();
 	private Stall<Reptil> reptile = new Stall<Reptil>();
+	private AnimalQueue raubtier = new AnimalQueue();
+	private AnimalQueue harmlos = new AnimalQueue();
+	
 
 	/**
 	 * Adds a new {@link Tier} to the {@link Arche}
@@ -44,13 +49,24 @@ public class Arche {
 
 		System.out.println("Reptilien-Stall");
 		System.out.println(reptile.toString());
+		System.out.println();
 	}
 
 	/**
 	 * TODO Genauere beschreibung notwendig
 	 */
 	public void erstelleFuetterungsWarteschlangen() {
-		// TODO Auto-generated method stub
+		birds.raubtiertrennung((Collection)harmlos,false);
+		mammals.raubtiertrennung((Collection)harmlos, false);
+		reptile.raubtiertrennung((Collection)harmlos, false);
+		birds.raubtiertrennung((Collection)raubtier, true);
+		mammals.raubtiertrennung((Collection)raubtier, true);
+		reptile.raubtiertrennung((Collection)raubtier, true);
+		
+		harmlos.printWarteschlange();
+		raubtier.printWarteschlange();
+		
+
 	}
 
 }
