@@ -10,7 +10,7 @@ import java.util.LinkedList;
  *         Fields next to each other
  *
  */
-public class Stall<T extends Tier> extends LinkedList<Tier> {
+public class Stall<T extends Tier> extends LinkedList<T> {
 
 	/**
 	 * Adds a {@link Tier} to the {@link Stall}
@@ -19,6 +19,7 @@ public class Stall<T extends Tier> extends LinkedList<Tier> {
 	 * @return Returns false if there is already a {@link Tier} of the same species
 	 *         and sex in the {@link Stall}
 	 */
+	@Override
 	public boolean add(T e) {
 		boolean exist = true;
 		// for loop checks if there already is the same species with the same sex,
