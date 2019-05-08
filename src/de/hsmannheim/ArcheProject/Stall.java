@@ -1,5 +1,6 @@
 package de.hsmannheim.ArcheProject;
 
+import java.util.Collection;
 import java.util.LinkedList;
 
 /**
@@ -30,7 +31,7 @@ public class Stall<T extends Tier> extends LinkedList<T> {
 			}
 
 		}
-		//adding the animal
+		// adding the animal
 		if (exist) {
 			super.add(e);
 			sort(new AnimalSpeciesComperator());
@@ -38,7 +39,23 @@ public class Stall<T extends Tier> extends LinkedList<T> {
 		}
 
 		return false;
-		
+
+	}
+
+	/**
+	 * Fills the given {@link Collection} with {@link Tier}
+	 * 
+	 * @param queue    The {@link Collection} to fill
+	 * @param raubtier If <code>true</code> only predetors will be filled into the
+	 *                 queue, if <code>false</code> only herbivores will filled into
+	 *                 the {@link Collection}
+	 */
+	public void raubtiertrennung(Collection<T> queue, boolean raubtier) {
+		for (T animal : this) {
+			if (animal.getRaubtier() == raubtier) {
+				queue.add(animal);
+			}
+		}
 	}
 
 	@Override
@@ -46,7 +63,7 @@ public class Stall<T extends Tier> extends LinkedList<T> {
 		String ret = "";
 
 		for (int i = 0; i < size(); i++) {
-			ret+= (get(i).getTierart() + "(" + get(i).getGeschlecht() + ")" + "|");
+			ret += (get(i).getTierart() + "(" + get(i).getGeschlecht() + ")" + "|");
 		}
 		return ret;
 	}
