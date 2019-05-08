@@ -1,6 +1,6 @@
 package de.hsmannheim.ArcheProject;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 
 /**
  * @author Jeremias Kunz, Daniel Reichel, Philipp Schick
@@ -10,7 +10,7 @@ import java.util.ArrayList;
  *         Fields next to each other
  *
  */
-public class Stall<T extends Tier> extends ArrayList<Tier> {
+public class Stall<T extends Tier> extends LinkedList<Tier> {
 
 	/**
 	 * Adds a {@link Tier} to the {@link Stall}
@@ -30,9 +30,8 @@ public class Stall<T extends Tier> extends ArrayList<Tier> {
 
 		}
 		//adding the animal
-		//normal add does not  work, why? no clue.
 		if (exist) {
-			add(size(),e);
+			super.add(e);
 			sort(new AnimalSpeciesComperator());
 			return true;
 		}
